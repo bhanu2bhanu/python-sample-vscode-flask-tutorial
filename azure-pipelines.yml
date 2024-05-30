@@ -25,7 +25,7 @@ steps:
     displayName: 'Install dependencies'
   
   - script: |
-      python scripts/script.py
+      python trial.py
     displayName: 'Run Python Script'
 
   - task: ArchiveFiles@2
