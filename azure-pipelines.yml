@@ -5,8 +5,8 @@ pr: none  # Disable PR trigger
 
 resources:
   pipelines:
-    - pipeline: 'bhanu2bhanu.python-sample-vscode-flask-tutorial'  # Name of the resource
-      source: 'bhanu2bhanu.react-memorygame'  # Project and pipeline name
+    - pipeline: 'pipelineA'  # Name of the resource
+      source: 'bhanu2bhanu.python-sample-vscode-flask-tutorial'  # Project and pipeline name
       trigger: 
         branches:
           include:
