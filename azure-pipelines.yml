@@ -1,11 +1,21 @@
-trigger:
-- main
+# azure-pipelines-python-sample-vscode-flask-tutorial.yml
+trigger: none  # Disable CI trigger for this pipeline
+
+pr: none  # Disable PR trigger for this pipeline
+
+resources:
+  pipelines:
+    - pipeline: 'reactMemoryGamePipeline'  # Arbitrary name for the pipeline resource
+      source: 'bhanu2bhanu.react-memorygame'  # Format: {projectName}/{pipelineName}
+      trigger:
+        branches:
+          include:
+            - main  # Trigger this pipeline when Pipeline A completes on the main branch
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'ubuntu-latest'
 
 steps:
-    
   - script: |
       python trial.py
     displayName: 'Run Python Script'
