@@ -1,16 +1,6 @@
 trigger:
-- none
+- main
 
-pr: none  # Disable PR trigger
-
-resources:
-  pipelines:
-    - pipeline: 'pipelineA'  # Name of the resource
-      source: 'bhanu2bhanu.python-sample-vscode-flask-tutorial'  # Project and pipeline name
-      trigger: 
-        branches:
-          include:
-            - main
 pool:
   vmImage: ubuntu-latest
 
