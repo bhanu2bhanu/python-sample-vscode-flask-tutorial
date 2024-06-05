@@ -1,6 +1,6 @@
 # azure-pipelines-python-sample-vscode-flask-tutorial.yml
 trigger:
-- main
+- none
 
 pr: none  # Disable PR trigger for this pipeline
 
@@ -9,7 +9,7 @@ resources:
     - pipeline: 'reactMemoryGamePipeline'  # Arbitrary name for the pipeline resource
       project: 'bhanuproject'  # The name of your Azure DevOps project
       source: 'bhanu2bhanu.react-memorygame'  # The name of Pipeline A
-      trigger: none  # Disable automatic trigger
+      trigger: true  # Disable automatic trigger
 
 pool:
   vmImage: 'ubuntu-latest'
