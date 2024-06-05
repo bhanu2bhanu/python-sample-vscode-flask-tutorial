@@ -1,0 +1,49 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+resources:
+  pipelines:
+    - pipeline: PipelineA
+      project: 'bhanuproject'
+      source: 'bhanu2bhanu.pipelineA'
+    - pipeline: PipelineB
+      project: 'bhanuproject'
+      source: 'bhanu2bhanu.pipelineB'
+    - pipeline: PipelineC
+      project: 'bhanuproject'
+      source: 'bhanu2bhanu.pipelineC'
+    - pipeline: PipelineD
+      project: 'bhanuproject'
+      source: 'bhanu2bhanu.pipelineD'
+
+steps:
+- script: echo "Starting main pipeline"
+  displayName: 'Start Main Pipeline'
+
+- task: Bash@3
+  displayName: 'Trigger Pipeline A'
+  inputs:
+    targetType: 'inline'
+    script: |
+      echo "Triggering Pipeline A..."
+      curl -X POST \
+        -u $(System.AccessToken): \
+        -H "Content-Type: application/json" \
+        --data '{}' \
+        https://dev.azure.com/bhanuproject/_apis/pipelines/PYFL_FE/runs?api-version=6.0-preview.1
+
+- task: Bash@3
+  displayName: 'Trigger Pipeline B'
+  inputs:
+    targetType: 'inline'
+    script: |
+      echo "Triggering Pipeline B..."
+      curl -X POST \
+        -u $(System.AccessToken): \
+        -H "Content-Type: application/json" \
+        --data '{}' \
+        https://dev.azure.com/bhanuproject/_apis/pipelines/PYFL_BE/runs?api-version=6.0-preview.1
+
