@@ -1,15 +1,6 @@
 # azure-pipelines-python-sample-vscode-flask-tutorial.yml
 trigger:
-- none
-
-pr: none  # Disable PR trigger for this pipeline
-
-resources:
-  pipelines:
-    - pipeline: 'reactMemoryGamePipeline'  # Arbitrary name for the pipeline resource
-      project: 'bhanuproject'  # The name of your Azure DevOps project
-      source: 'bhanu2bhanu.react-memorygame'  # The name of Pipeline A
-      trigger: true  # Disable automatic trigger
+- main
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -23,3 +14,14 @@ steps:
       echo "Triggering React Memory Game Pipeline..."
     displayName: 'Trigger React Memorygame Pipeline'
 
+  - task: Bash@3
+    displayName: 'Trigger Pipeline B'
+    inputs:
+      targetType: 'inline'
+      script: |
+        echo "Triggering Pipeline B..."
+        curl -X POST \
+          -u $(System.AccessToken): \
+          -H "Content-Type: application/json" \
+          --data '{"resources": {}}' \
+          https://dev.azure.com/bhanupragnya/bhanuproject/_apis/pipelines/6/runs?api-version=6.0-preview.1
