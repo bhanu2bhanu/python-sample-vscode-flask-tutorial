@@ -1,15 +1,3 @@
-# azure-pipelines-python-sample-vscode-flask-tutorial.yml
-trigger:
-- main
-
-pool:
-  vmImage: 'ubuntu-latest'
-
 steps:
-  - script: |
-      python trial.py
-    displayName: 'Run Python Script'
-
-  - script: |
-      echo "Triggering React Memory Game Pipeline..."
-    displayName: 'Trigger React Memorygame Pipeline'
+- script: echo frontend
+  displayName: 'Run Python Script'
