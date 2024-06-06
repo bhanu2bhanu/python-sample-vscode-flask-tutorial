@@ -19,10 +19,6 @@ resources:
       project: 'bhanuproject'
       source: 'PYFL_DB'
 
-jobs:
-- job: Linux
-  pool:
-    vmImage: 'ubuntu-latest'
-  steps:
-  - template: azure-pipelines.yml  # Template reference
+steps:
+  - script: echo running all pipelines
 
