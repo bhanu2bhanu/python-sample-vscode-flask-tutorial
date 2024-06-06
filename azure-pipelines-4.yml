@@ -20,5 +20,5 @@ resources:
       source: 'PYFL_DB'
 
 steps:
-  - script: echo running all pipelines
+  - template: azure-pipelines.yml
 
